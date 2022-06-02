@@ -10,7 +10,7 @@ let botTop = coord.top;
 let botBottom= coord.bottom;
 let goal =0;
 let under=false;
-let midX,midY
+let midX,midY,x,y;
 if (localStorage["score"]){
     goal=parseInt( localStorage.score);
 }
@@ -18,25 +18,25 @@ else { goal = 5;}
 info.textContent=`SCORE: ${goal}`;
 
 reset.addEventListener("click",()=>resetScore())
-container.addEventListener("mousemove",(e)=>calculateCoord(e))
+field.addEventListener("mousemove",(e)=>main(e))
 setInterval(randomMove, 300);
 
 
-function calculateCoord(e){
-    let x= e.clientX;
-    let y= e.clientY;
+function main(e){
+     x= e.clientX;
+     y= e.clientY;
     info.textContent=`SCORE: ${goal}`;
     let elem= document.elementFromPoint(x,y);
     if(elem === bot){
         ;
-        bot.style.backgroundColor="#900";
+        bot.style.backgroundImage=`url("/assets/images/bigeyes.png")`;
         if (!under){
             goal++;
             under=true;
         }
         localStorage.score=goal;
     } else {
-         bot.style.backgroundColor="#090";
+         bot.style.backgroundImage=`url("/assets/images/smile.png")`;
          under=false;
 
 }
@@ -50,7 +50,8 @@ function calculateCoord(e){
     let deltaX= Math.abs(x-midX);
     let deltaY = Math.abs(y-midY);
     if(deltaX<200 && deltaY<200){
-        bot.style.transform= `translate(${deltaX}px,${deltaY}px)`
+
+        bot.style.top=`${y-50}px`
     }
 
 }
@@ -58,10 +59,11 @@ function calculateCoord(e){
 function resetScore(){
     goal=0;
     localStorage.score=goal;
+    info.textContent=`SCORE: ${goal}`;
+    bot.style.top="0px";
 }
 
 function randomMove(){
-    let randomX= Math.random()*10;
-    let randomY= Math.random()*10;
-    bot.style.transform= `translate(${randomX+midX}px,${randomY+midY}px)`
+    let randomAngle= Math.random()*60-30
+    bot.style.transform= `rotateZ(${randomAngle}deg)`
 }

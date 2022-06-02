@@ -9,13 +9,14 @@
 }
 
 .info{
-    border: 1px solid #999;
+    border: .5vmin solid #999;
+    background-color: #eee;
     width: 30vw;
     height: 10vh;
     position: fixed;
-    top:0vw;
+    top:3vh;
     left:35vw;
-    font-size: 4vw;
+    font-size: 4vmin;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +24,7 @@
 
 .field{
     
-    border: 2px solid #090;
+    border: .5vmin solid #090;
     width: 80vw;
     height: 70vh;
     position: fixed;
@@ -34,27 +35,30 @@
     position: absolute;
     width: 5vw;
     height: 5vw;
-    background-color: #090;
+    background-image:url("/assets/images/smile.png");
+    background-size: 5vw;
     transition: 100ms;
     transition-delay: 3ms;
 }
 
 .reset{
+    display: flex;
     width: 16vw;
-    height: 5vw;
-    border: .2vw solid red ;
-    text-align: center;
-    border-radius: 1vw;
+    height: 5vh;
+    border: .5vmin solid red ;
+    border-radius: 1vmin;
     color: red;
     cursor: pointer;
     position: fixed;
-    top:90vh;
-    left: 42vw;
-    font-size: 4vw;
+    top:8vh;
+    left: 72vw;
+    font-size: 4vmin;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5e5e5;
 }
 .reset:hover{
-    border: .2vw solid #a00 ;
-    text-align: center;
-    border-radius: 1vw;
+    border: .3vmin solid #a00 ;
+
     color: #a00;
 }
