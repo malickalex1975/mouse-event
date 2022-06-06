@@ -6,6 +6,8 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    background-color: #090;
+    transition:2s;
 }
 
 .info{
@@ -68,4 +70,23 @@
     border: .3vmin solid #a00 ;
 
     color: #a00;
+}
+.popup{
+    width:20vw;
+    height:16vh;
+    background-color: rgb(35, 250, 232);
+    position: fixed;
+    top:-40vh;
+    left:40vw;
+    border-radius: 1vw;
+    transition:1s;
+}
+.message{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #eee;
+    font-size: 3vw;
+    
 }

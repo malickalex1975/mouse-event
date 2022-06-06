@@ -3,6 +3,8 @@ const info=document.querySelector(".info");
 const container=document.querySelector(".container");
 const bot =document.querySelector(".bot");
 const reset = document.querySelector(".reset");
+const popup = document.querySelector(".popup");
+const message = document.querySelector(".message");
 let coord= bot.getBoundingClientRect();
 let botRight=coord.right;
 let botLeft= coord.left;
@@ -37,6 +39,8 @@ function main(e){
         if (!under){
             goal++;
             under=true;
+            if (goal%10===0){ createPopup(goal)}
+            else deletePopup();
         }
         localStorage.score=goal;
     } else {
@@ -77,4 +81,16 @@ function randomMove(){
 function randomFace(){
     randomPicture =Math.floor(Math.random()*8);
     bot.style.backgroundImage=`url("./assets/images/smile-${randomPicture}.png")`
+}
+
+function createPopup(score){
+    popup.style.top="42vh";
+    message.textContent=`Your score: ${score}`;
+    container.style.backgroundColor="rgba(0,0,0,0.7)"
+
+}
+function deletePopup(){
+    popup.style.top="-42vh";
+    container.style.backgroundColor=""
+
 }
