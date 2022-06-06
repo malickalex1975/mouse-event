@@ -11,6 +11,7 @@ let botBottom= coord.bottom;
 let goal =0;
 let under=false;
 let midX,midY,x,y;
+let randomPicture =1
 if (localStorage["score"]){
     goal=parseInt( localStorage.score);
 }
@@ -20,6 +21,7 @@ info.textContent=`SCORE: ${goal}`;
 reset.addEventListener("click",()=>resetScore())
 field.addEventListener("mousemove",(e)=>main(e))
 setInterval(randomMove, 300);
+setInterval(randomFace, 3000);
 
 
 function main(e){
@@ -29,14 +31,16 @@ function main(e){
     let elem= document.elementFromPoint(x,y);
     if(elem === bot){
         ;
-        bot.style.backgroundImage=`url("/assets/images/bigeyes.png")`;
+        bot.style.backgroundImage=`url("/assets/images/smile-1.png")`;
+        info.style.boxShadow=".1vmin .1vmin 10vmin red ";
+        setTimeout(()=>info.style.boxShadow=".1vmin .1vmin 10vmin",300)
         if (!under){
             goal++;
             under=true;
         }
         localStorage.score=goal;
     } else {
-         bot.style.backgroundImage=`url("/assets/images/smile.png")`;
+        bot.style.backgroundImage=`url("/assets/images/smile-${randomPicture}.png")`
          under=false;
 
 }
@@ -51,7 +55,9 @@ function main(e){
     let deltaY = Math.abs(y-midY);
     if(deltaX<200 && deltaY<200){
 
-        bot.style.top=`${y-50}px`
+        bot.style.top=`calc(${y}px - 15vh)`;
+        bot.style.left=`calc(${x}px - 10vw)`;
+        
     }
 
 }
@@ -66,4 +72,9 @@ function resetScore(){
 function randomMove(){
     let randomAngle= Math.random()*60-30
     bot.style.transform= `rotateZ(${randomAngle}deg)`
+}
+
+function randomFace(){
+    randomPicture =Math.floor(Math.random()*8);
+    bot.style.backgroundImage=`url("/assets/images/smile-${randomPicture}.png")`
 }
