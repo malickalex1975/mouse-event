@@ -33,13 +33,14 @@
     left:10vw; 
     overflow: hidden;
     background-color: #999;
+    cursor: url("./assets/images/smile-3.png");
     
 }
 .bot{
     position: absolute;
     width: 5vw;
     height: 5vw;
-    background-image:url("/assets/images/smile-7.png");
+    background-image:url("./assets/images/smile-7.png");
     background-size: 5vw;
     transition: 300ms;
     transition-delay: 3ms;

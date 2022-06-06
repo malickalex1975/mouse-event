@@ -31,7 +31,7 @@ function main(e){
     let elem= document.elementFromPoint(x,y);
     if(elem === bot){
         ;
-        bot.style.backgroundImage=`url("/assets/images/smile-1.png")`;
+        bot.style.backgroundImage=`url("./assets/images/smile-1.png")`;
         info.style.boxShadow=".1vmin .1vmin 10vmin red ";
         setTimeout(()=>info.style.boxShadow=".1vmin .1vmin 10vmin",300)
         if (!under){
@@ -40,7 +40,7 @@ function main(e){
         }
         localStorage.score=goal;
     } else {
-        bot.style.backgroundImage=`url("/assets/images/smile-${randomPicture}.png")`
+        bot.style.backgroundImage=`url("./assets/images/smile-${randomPicture}.png")`
          under=false;
 
 }
@@ -76,5 +76,5 @@ function randomMove(){
 
 function randomFace(){
     randomPicture =Math.floor(Math.random()*8);
-    bot.style.backgroundImage=`url("/assets/images/smile-${randomPicture}.png")`
+    bot.style.backgroundImage=`url("./assets/images/smile-${randomPicture}.png")`
 }
